@@ -1,6 +1,6 @@
 import React from 'react'
-
 import Formulario from './formulario'
+import {connect} from 'react-redux'
 
 const Conversor = props => {
     return (
@@ -14,11 +14,17 @@ const Conversor = props => {
                       <Formulario/>
                    </div>
                    <div className="card-footer text-light bg-dark">
-                       00,00
+                       {JSON.stringify(props.conversor)}
                    </div>
                </div>
            </div>
        </div>
     )
 }
-export default Conversor
+
+function mapStateToProps(state){
+    return{
+        conversor:state.conversor
+    }
+}
+export default connect(mapStateToProps)(Conversor)
